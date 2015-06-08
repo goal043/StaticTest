@@ -1,0 +1,20 @@
+
+/////////////////////////////////////////////////////////////////////////////
+
+cd /home/lex/Projects/atlascommand/src/hello/main/
+
+CGO_ENABLED=0 go build -a -ldflags '-s' .
+
+cp main /home/lex/Projects/test
+
+/////////////////////////////////////////////////////////////////////////////
+
+cd /home/lex/Projects/test/
+
+docker build -t goal043/static-test .
+
+docker run -d --name static-test -p 51299:8080 goal043/static-test
+
+open:
+http://localhost:51299/
+
