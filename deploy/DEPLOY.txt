@@ -5,16 +5,25 @@ cd /home/lex/Projects/atlas-command/src/hello/main/
 
 CGO_ENABLED=0 go build -a -ldflags '-s' .
 
-cp main /home/lex/Projects/project-test
+cp main /home/lex/Projects/projects/test
 
 /////////////////////////////////////////////////////////////////////////////
 
-cd /home/lex/Projects/project-test/
+cd /home/lex/Projects/projects/test/
 
 docker build -t goal043/static-test .
 
-docker run -d --name static-test -p 51299:8080 goal043/static-test
+docker run -d --name test-web -p 51206:8080 goal043/static-test
 
 open:
-http://localhost:51299/
+	http://localhost:51206/
+or
+	http://test.atlas/
+or
+	http://test.atlas/v0/
 
+
+/////////////////////////////////////////////////////////////////////////////
+
+cp nginx.local.conf /etc/nginx/sites-enabled/web-atlas
+sudo nginx -s reload
