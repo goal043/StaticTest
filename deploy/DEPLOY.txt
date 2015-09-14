@@ -1,3 +1,21 @@
+/////////////////////////////////////////////////////////////
+// Nginx / Load Balancing
+/////////////////////////////////////////////////////////////
+
+// local
+
+cd ~/Projects/projects/test/deploy
+sudo cp nginx.lb-local.conf /etc/nginx/sites-enabled/test
+sudo nginx -s reload
+
+// production
+
+cd ~/Projects/projects/test/deploy
+scp nginx.lb-production.conf root@adama:/etc/nginx/sites-enabled/test
+ssh root@adama sudo nginx -s reload
+scp nginx.lb-production.conf root@cain:/etc/nginx/sites-enabled/test
+ssh root@cain sudo nginx -s reload
+
 
 /////////////////////////////////////////////////////////////////////////////
 
